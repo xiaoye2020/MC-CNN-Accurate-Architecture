@@ -39,7 +39,7 @@ class MCCNNNet(nn.Module):
         self.layer3 = nn.Sequential(nn.Linear(384,384), nn.ReLU(inplace=True))
         self.layer4 = nn.Linear(384,1)
 
-
+ 
     def forward(self, left, right):
         refimg_fea     = self.feature_extraction(left)
         targetimg_fea  = self.feature_extraction(right)
@@ -51,7 +51,7 @@ class MCCNNNet(nn.Module):
         output=self.layer2(output)
         output=self.layer3(output)
         output=self.layer4(output)
-        output=F.sigmoid(output)
+        output=F.sigmoid(output)   
         return output
 
 
@@ -73,14 +73,14 @@ class feature_extraction(nn.Module):
         return output
   
 
-model=MCCNNNet()
+# model=MCCNNNet()
 
-imgL=torch.rand(1,1,9, 9)
-imgL= Variable(torch.FloatTensor(imgL))
+# imgL=torch.rand(1,1,9, 9)
+# imgL= Variable(torch.FloatTensor(imgL))
 
-imgR=torch.rand(1,1,9, 9)
-imgR= Variable(torch.FloatTensor(imgR))
+# imgR=torch.rand(1,1,9, 9)
+# imgR= Variable(torch.FloatTensor(imgR))
 
-optimizer = optim.SGD(model.parameters(), lr=0.003, momentum=0.9)
+# optimizer = optim.SGD(model.parameters(), lr=0.003, momentum=0.9)
 
-train(imgL,imgR)
+# train(imgL,imgR)
